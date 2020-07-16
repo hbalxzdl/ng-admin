@@ -1,0 +1,23 @@
+<div class="navbar-container ">
+
+
+  <div class="header-icon-wrap" >
+    <nz-avatar nzSize="large" nzIcon="user" [nzSrc]="'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif?imageView2/1/w/80/h/80'"></nz-avatar>
+
+
+    <a nz-dropdown [nzDropdownMenu]="menu" class="user-name" >
+      admin
+      <i nz-icon nzType="down"></i>
+    </a>
+
+    <nz-dropdown-menu #menu="nzDropdownMenu">
+      <ul nz-menu nzSelectable (click)="change($event)">
+        <li nz-menu-item type="1"> <i class="icon iconfont fc-header-icon fc-icon-personnel"></i> 个人中心</li>
+        <li nz-menu-item type="2"><i class="icon iconfont fc-header-icon fc-icon-password"></i>修改密码</li>
+        <li nz-menu-item type="3"><i class=" icon iconfont fc-header-icon fc-icon-tuichu"></i> 退出</li>
+      </ul>
+    </nz-dropdown-menu>
+
+  </div>
+</div>
+

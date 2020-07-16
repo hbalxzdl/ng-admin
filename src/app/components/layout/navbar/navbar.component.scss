@@ -1,0 +1,17 @@
+.navbar-container{
+  margin: 12px 24px 0 ;
+
+}
+
+.header-icon-wrap{
+  height: 40px;
+  line-height: 40px;
+  cursor: pointer;
+  ::ng-deep nz-avatar{
+    margin: 0 10px 0;
+  }
+}
+
+.user-name{
+
+}
