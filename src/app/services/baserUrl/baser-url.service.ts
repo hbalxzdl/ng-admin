@@ -7,6 +7,5 @@ export class BaserUrlService {
 
   constructor() { }
 
-  public SERVICE_URL = "http://cs.weldjoin.com/";//域名
 
 }

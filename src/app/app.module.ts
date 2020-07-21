@@ -18,6 +18,8 @@ import { LayoutModule } from './module/layout/layout.module';
 import { LoginComponent } from './components/login/login.component';
 
 
+
+
 registerLocaleData(zh);
 
 @NgModule({

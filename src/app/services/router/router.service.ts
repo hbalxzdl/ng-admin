@@ -18,7 +18,7 @@ export class RouteguardService {
     // 当前路由名称
     var path = route.routeConfig.path;
     // nextRoute: 设置需要路由守卫的路由集合
-    const nextRoute = ['index'];
+    const nextRoute = ['pages'];
     const hasToken = this.storageService.get('token')
 
     // 当前路由是nextRoute指定页时
@@ -42,7 +42,7 @@ export class RouteguardService {
         return true;
       }else{
         // 已登录，跳转到home
-        this.router.navigate(['index']);
+        this.router.navigate(['pages/dashboard']);
         return false;
       }
     }
