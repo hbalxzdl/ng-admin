@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
-import { LayoutComponent } from '../../components/layout/layout.component';
+import { LayoutComponent } from './layout.component';
 import {NzAvatarModule, NzDividerModule, NzDropDownModule, NzIconModule, NzLayoutModule, NzMenuModule, } from 'ng-zorro-antd';
 import {RouterModule} from '@angular/router';
-import {NavbarComponent} from '../../components/layout/navbar/navbar.component'
+import {NavbarComponent} from './navbar/navbar.component'
 
 import {IndexComponent} from '../../pages/index/index.component'
-import {ContainerModule} from '../container/container.module'
-import {TableModule} from '../../components/table/table.module'
+// import {ContainerModule} from '../container/container.module'
+import {ContainerComponent} from '../container/container.component'
+import {TableModule} from '../../pages/table/table.module'
 
 import {CommonModule} from '@angular/common';
 
@@ -21,16 +22,17 @@ import {CommonModule} from '@angular/common';
     NzIconModule,
     NzAvatarModule,
     NzDropDownModule,
-    ContainerModule,
+
     NzDividerModule,
     CommonModule,
-    TableModule,
+
 
   ],
   declarations: [
     LayoutComponent,
     NavbarComponent,
-    IndexComponent
+    IndexComponent,
+    ContainerComponent
   ],
   exports:[
 

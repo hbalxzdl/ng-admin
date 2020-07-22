@@ -4,6 +4,8 @@ import { NgZorroAntdModule ,NZ_I18N,zh_CN,NzIconModule} from "ng-zorro-antd";
 
 import { NzButtonModule} from "ng-zorro-antd";
 
+// import {NzButtonModule} from 'ng-zorro-antd/button'
+
 import { AppComponent } from './app.component';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -14,8 +16,8 @@ import zh from '@angular/common/locales/zh';
 
 import { Routes, RouterModule } from '@angular/router';
 import { AppRoutes } from './app.route';
-import { LayoutModule } from './module/layout/layout.module';
-import { LoginComponent } from './components/login/login.component';
+import { LayoutModule } from './components/layout/layout.module';
+import { LoginComponent } from './pages/login/login.component';
 
 
 
@@ -30,6 +32,7 @@ registerLocaleData(zh);
   ],
   imports: [
     BrowserModule,
+    NgZorroAntdModule,
     RouterModule.forRoot(AppRoutes),
     FormsModule,
     ReactiveFormsModule,
@@ -38,7 +41,7 @@ registerLocaleData(zh);
     LayoutModule,
     NzButtonModule,
     NzIconModule,
-    NgZorroAntdModule
+
 
   ],
   providers: [
