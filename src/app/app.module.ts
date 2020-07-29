@@ -2,9 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { NgZorroAntdModule ,NZ_I18N,zh_CN,NzIconModule} from "ng-zorro-antd";
 
-import { NzButtonModule} from "ng-zorro-antd";
-
-// import {NzButtonModule} from 'ng-zorro-antd/button'
+import { NzButtonModule ,NzPaginationModule } from 'ng-zorro-antd'
 
 import { AppComponent } from './app.component';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
@@ -18,9 +16,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AppRoutes } from './app.route';
 import { LayoutModule } from './components/layout/layout.module';
 import { LoginComponent } from './pages/login/login.component';
-
-
-
+import { SidebarComponent } from './components/sidebar/sidebar.component';
 
 registerLocaleData(zh);
 
@@ -28,22 +24,23 @@ registerLocaleData(zh);
   declarations: [
     AppComponent,
     LoginComponent,
-
   ],
+
   imports: [
     BrowserModule,
-    NgZorroAntdModule,
     RouterModule.forRoot(AppRoutes),
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
     LayoutModule,
-    NzButtonModule,
     NzIconModule,
-
+    NzButtonModule,
+    NzPaginationModule,
+    NgZorroAntdModule,
 
   ],
+
   providers: [
 
     { provide: NZ_I18N, useValue: zh_CN, }],

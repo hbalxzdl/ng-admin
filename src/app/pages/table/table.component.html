@@ -1,21 +1,31 @@
 <div>
   <app-container>
     <div class="header">
-      <form [nzLayout]="'inline'" nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()" class="ant-advanced-search-form">
-        <nz-form-item>
-          <nz-form-label>状态</nz-form-label>
-          <nz-form-control>
-            <input nz-input placeholder="placeholder" formControlName="status" />
-          </nz-form-control>
-        </nz-form-item>
-        <nz-form-item>
-          <nz-form-control>
-            <button nz-button nzType="primary">查询</button>
-          </nz-form-control>
-        </nz-form-item>
-      </form>
+<!--      <form [nzLayout]="'inline'" nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()" class="ant-advanced-search-form">-->
+<!--        <nz-form-item>-->
+<!--          <nz-form-label>状态</nz-form-label>-->
+<!--          <nz-form-control >-->
+<!--            <input nz-input placeholder="placeholder" formControlName="status" />-->
+<!--          </nz-form-control>-->
+<!--        </nz-form-item>-->
+<!--        <nz-form-item>-->
+<!--          <nz-form-control>-->
+<!--            <button nz-button nzType="primary">查询</button>-->
+<!--          </nz-form-control>-->
+<!--        </nz-form-item>-->
+<!--      </form>-->
+
+
+      <app-sidebar></app-sidebar>
     </div>
-    <div class="footer"> <button nz-button nzType="primary">Primary</button></div>
+
+    <div class="body">
+
+      <button nz-button nzType="primary">Primary</button>
+    </div>
+    <div class="footer">
+      <nz-pagination [nzPageIndex]="1" [nzTotal]="50"></nz-pagination>
+    </div>
   </app-container>
 
 <!--  <nz-table #basicTable [nzData]="listOfData" [nzScroll]="{ y: '240px' }">-->

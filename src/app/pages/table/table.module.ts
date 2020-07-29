@@ -1,23 +1,25 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {TableComponent} from './table.component'
-import {NzDividerModule, NzFormModule, NzGridModule, NzTableModule} from 'ng-zorro-antd';
-import {ContainerModule} from '../../module/container/container.module';
+import {ContainerComponent} from './../../components/container/container.component'
+import { NgZorroAntdModule } from "ng-zorro-antd"
 import {ReactiveFormsModule} from '@angular/forms';
+import {SidebarComponent} from '../../components/sidebar/sidebar.component';
 
 
 @NgModule({
   declarations: [
-    TableComponent
+    TableComponent,
+    ContainerComponent,
+    SidebarComponent
   ],
   imports: [
     CommonModule,
-    NzTableModule,
-    NzDividerModule,
-    ContainerModule,
-    NzGridModule,
-    ReactiveFormsModule,
-    NzFormModule
+    NgZorroAntdModule,
+    ReactiveFormsModule
+  ],
+  providers:[
+    // ContainerComponent
   ]
 })
 export class TableModule { }
