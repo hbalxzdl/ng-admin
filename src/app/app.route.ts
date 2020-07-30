@@ -10,6 +10,8 @@ import { RouteguardService } from './services/router/router.service';
 export const AppRoutes: Routes =[
   {
     path: 'pages',
+    canActivate: [RouteguardService],
+    data: { breadcrumb: '首页' },
     loadChildren: () => import('./pages/pages.module')
       .then(m => m.PagesModule),
   },

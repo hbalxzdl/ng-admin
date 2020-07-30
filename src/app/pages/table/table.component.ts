@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
+import { Router ,ActivatedRoute} from "@angular/router";
 
 interface Person {
   key: string;
@@ -11,7 +12,7 @@ interface Person {
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
-  styleUrls: ['./table.component.css']
+  styleUrls: ['./table.component.scss']
 })
 
 
@@ -40,12 +41,17 @@ export class TableComponent implements OnInit {
   ];
   validateForm!: FormGroup;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder,
+              private route: ActivatedRoute,) { }
 
   ngOnInit(): void {
     this.validateForm = this.fb.group({
       status:null
     });
+
+    // this.route.url.subscribe(url => {
+    //   console.log(url)
+    // });
   }
 
   submitForm(): void {
