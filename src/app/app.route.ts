@@ -3,14 +3,14 @@ import { LayoutComponent } from './components/layout/layout.component';
 import { LoginComponent } from './pages/login/login.component';
 import { TableComponent } from './pages/table/table.component';
 import {IndexComponent} from './pages/index/index.component'
-import { RouteguardService } from './services/router/router.service';
+import { AuthService } from './services/router/auth/auth.service';
 
 
 
 export const AppRoutes: Routes =[
   {
     path: 'pages',
-    canActivate: [RouteguardService],
+    canActivate: [AuthService],  //进入认证
     data: { breadcrumb: '首页' },
     loadChildren: () => import('./pages/pages.module')
       .then(m => m.PagesModule),
@@ -19,7 +19,7 @@ export const AppRoutes: Routes =[
   {
     path: 'login',
     component: LoginComponent,
-    canActivate: [RouteguardService]
+    canActivate: [AuthService]  //进入认证
   },
 
   {  path: '', redirectTo: 'pages',pathMatch: 'full'},

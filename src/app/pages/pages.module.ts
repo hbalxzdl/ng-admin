@@ -9,6 +9,10 @@ import {SidebarComponent} from '../components/sidebar/sidebar.component'
 
 import {IndexComponent} from '../pages/index/index.component'
 import {TableComponent} from '../pages/table/table.component'
+// import {TamModule} from 'angular-splitter/lib/tam.module';
+
+
+
 
 
 @NgModule({
@@ -20,8 +24,10 @@ import {TableComponent} from '../pages/table/table.component'
   ],
   imports: [
     CommonModule,
+
     PagesRoutingModule,
-    NgZorroAntdModule
+    NgZorroAntdModule,
+    // TamModule
   ]
 })
 export class PagesModule { }

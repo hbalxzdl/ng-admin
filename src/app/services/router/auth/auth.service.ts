@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Router } from "@angular/router";
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
-import {StorageService} from '../storage/storage.service'
+import {StorageService} from '../../storage/storage.service'
+
 
 @Injectable({
   providedIn: 'root'
 })
-export class RouteguardService {
+export class AuthService {
 
   constructor(
     private router: Router,

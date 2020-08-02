@@ -16,8 +16,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AppRoutes } from './app.route';
 import { LayoutModule } from './components/layout/layout.module';
 import { LoginComponent } from './pages/login/login.component';
-import { SidebarComponent } from './components/sidebar/sidebar.component';
-import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
+
 
 registerLocaleData(zh);
 
@@ -36,9 +35,6 @@ registerLocaleData(zh);
     HttpClientModule,
     BrowserAnimationsModule,
     LayoutModule,
-    NzIconModule,
-    NzButtonModule,
-    NzPaginationModule,
     NgZorroAntdModule,
 
   ],
