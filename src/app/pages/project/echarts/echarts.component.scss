@@ -1,0 +1,30 @@
+.card-panel-icon-wrapper{
+  float: left;
+  padding: 16px;
+  font-size: 48px;
+}
+
+.card-panel-description{
+  float: right;
+  font-weight: 700;
+  margin: 26px;
+  margin-left: 0;
+  .card-panel-text{
+    line-height: 18px;
+    color: rgba(0,0,0,.45);
+    font-size: 16px;
+    margin-bottom: 12px;
+  }
+
+  .card-panel-num{
+    font-size: 20px;
+  }
+}
+
+.chart{
+  height: 350px;
+  width: 100%;
+
+}
+
+

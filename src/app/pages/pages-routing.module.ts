@@ -5,6 +5,7 @@ import {IndexComponent} from './index/index.component'
 import {TableComponent} from  './table/table.component'
 import {AuthService} from '../services/router/auth/auth.service'
 import{CanDeactivatService} from '../services/router/can-deactivat/can-deactivat.service'
+import {ProjectModule} from './project/project.module'
 
 const routes: Routes = [{
   path: '',
@@ -19,8 +20,15 @@ const routes: Routes = [{
     {
       path: 'table',
       component: TableComponent,
-      data: { breadcrumb: '表格' },
+      data: { title: '表格' },
       canDeactivate: [CanDeactivatService],
+    },
+
+    {
+      path: 'project',
+      data: { title: '首页'},
+      loadChildren: () => import('./project/project.module')
+        .then(m => m.ProjectModule),
     },
 
     {  path: '', redirectTo: 'dashboard', pathMatch: 'full',},

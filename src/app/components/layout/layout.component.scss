@@ -57,6 +57,40 @@
   vertical-align: middle;
 }
 
+.toggle{
+  display:flex;
+  justify-content:center;
+  transition:all 0.2s;
+  ::ng-deep .ant-btn-round{
+    padding: 4px 32px;
+    margin: 0 5px;
+    background: rgb(85, 88, 102);
+    border: none;
+    color: #ffffff;
+    font-weight:700
+  }
+  ::ng-deep .ant-btn-round.active{
+    background:rgb(228, 103, 19);
+  }
+}
+
+.card-container{
+  ::ng-deep .ant-tabs-bar{
+    border: none;
+  }
+  ::ng-deep .ant-tabs.ant-tabs-card .ant-tabs-card-bar .ant-tabs-tab{
+    background: #001529;
+    padding: 8px 0;
+    border: none;
+  }
+
+  ::ng-deep .ant-tabs.ant-tabs-card .ant-tabs-card-bar .ant-tabs-tab-active{
+    background: #001529;
+  }
+
+
+}
+
 nz-header {
   padding: 0;
   width: 100%;

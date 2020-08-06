@@ -24,7 +24,6 @@ import {TableComponent} from '../pages/table/table.component'
   ],
   imports: [
     CommonModule,
-
     PagesRoutingModule,
     NgZorroAntdModule,
     // TamModule

@@ -8,13 +8,16 @@ import { AuthService } from './services/router/auth/auth.service';
 
 
 export const AppRoutes: Routes =[
+
   {
     path: 'pages',
     canActivate: [AuthService],  //进入认证
-    data: { breadcrumb: '首页' },
+    data: { title: '首页'},
     loadChildren: () => import('./pages/pages.module')
       .then(m => m.PagesModule),
   },
+
+
 
   {
     path: 'login',

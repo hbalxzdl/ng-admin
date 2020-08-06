@@ -8,12 +8,17 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class LayoutComponent implements OnInit {
   isCollapsed:boolean=true
+  curIndex:number=1;
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.route.url.subscribe(url => {
       console.log(url)
     });
+  }
+
+  toggle(event):void{
+    this.curIndex=Number(event.target.dataset.index)
   }
 
 }
