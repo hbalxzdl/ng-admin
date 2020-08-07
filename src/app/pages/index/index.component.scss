@@ -1,0 +1,12 @@
+.splitterContainer{
+  height: calc(100% - 40px);
+  border: 1px solid #e3e5e9
+}
+
+
+
+ ::ng-deep .body-container{
+    padding-bottom: 0!important;
+}
+
+

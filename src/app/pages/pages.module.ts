@@ -9,6 +9,7 @@ import {SidebarComponent} from '../components/sidebar/sidebar.component'
 
 import {IndexComponent} from '../pages/index/index.component'
 import {TableComponent} from '../pages/table/table.component'
+import {SplitterModule} from 'ng-devui';
 // import {TamModule} from 'angular-splitter/lib/tam.module';
 
 
@@ -26,6 +27,7 @@ import {TableComponent} from '../pages/table/table.component'
     CommonModule,
     PagesRoutingModule,
     NgZorroAntdModule,
+    SplitterModule,
     // TamModule
   ]
 })

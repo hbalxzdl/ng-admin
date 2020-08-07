@@ -14,15 +14,15 @@
   overflow: hidden;
 }
 
-.header{
-  padding: 10px 20px;
-  border-bottom: 1px solid #cfd7e5;
-  background: #fff;
-  display: flex;
-  align-items: center;
-}
+//.header{
+//  padding: 10px 20px;
+//  border-bottom: 1px solid #cfd7e5;
+//  background: #fff;
+//  display: flex;
+//  align-items: center;
+//}
 
-.body{
+.body-container{
   -webkit-box-flex: 1;
   -ms-flex-positive: 1;
   flex-grow: 1;
@@ -33,7 +33,7 @@
   background: #fff;
 }
 
-.footer{
+.footer-container{
   border-top: 1px solid #cfd7e5;
   background: #fff;
   padding: 20px;

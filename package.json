@@ -21,6 +21,7 @@
     "@angular/router": "~10.0.2",
     "angular-splitter": "^1.0.1",
     "echarts": "^4.8.0",
+    "ng-devui": "^9.1.0",
     "ng-zorro-antd": "^9.3.0",
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",

@@ -18,6 +18,7 @@ import {LayoutModule} from './components/layout/layout.module';
 import {LoginComponent} from './pages/login/login.component';
 
 
+
 registerLocaleData(zh);
 
 @NgModule({
@@ -36,6 +37,7 @@ registerLocaleData(zh);
     BrowserAnimationsModule,
     LayoutModule,
     NgZorroAntdModule,
+
 
   ],
 

@@ -1,12 +1,11 @@
 <div class="container">
-  <div class="header">
-    <ng-content select=".header"></ng-content>
-  </div>
-  <div class="body">
-    <ng-content select=".body"></ng-content>
+  <ng-content select=".header"></ng-content>
+
+  <div class="body-container">
+    <ng-content select=".body" ></ng-content>
   </div>
 
-  <div class="footer">
+  <div class="footer-container">
     <ng-content select=".footer"></ng-content>
   </div>
 </div>
