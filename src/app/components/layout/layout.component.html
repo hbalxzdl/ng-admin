@@ -14,17 +14,17 @@
 
     <div class="toggle" *ngIf="!isCollapsed" (click)="toggle($event)">
       <button nz-button nzType="link" nzShape="round" [attr.data-index]="1" [ngClass]="{active:1==curIndex}">资源</button>
-      <button nz-button nzType="link"  nzShape="round" [attr.data-index]="2" [ngClass]="{active:2==curIndex}">项目</button>
+      <button nz-button nzType="link" nzShape="round" [attr.data-index]="2" [ngClass]="{active:2==curIndex}">项目</button>
     </div>
 
 
     <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed" *ngIf="curIndex==1">
       <li nz-submenu nzOpen nzTitle="嵌套路由" nzIcon="dashboard">
         <ul>
-          <li nz-menu-item >
+          <li nz-menu-item>
             菜单1
           </li>
-          <li nz-submenu  nzTitle="菜单2">
+          <li nz-submenu nzTitle="菜单2">
             <ul>
               <li nz-menu-item>菜单2-1</li>
               <li nz-menu-item>菜单2-2</li>
@@ -43,20 +43,28 @@
     </ul>
 
     <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed" *ngIf="curIndex==2">
+      <ng-container *ngTemplateOutlet="menuTpl; context: { $implicit: menus }"></ng-container>
 
-      <li nz-menu-item nz-tooltip nzTooltipPlacement="right" nzTitle="图表"  routerLink="/pages/project/echarts">
-        <i nz-icon nzType="area-chart" nzTheme="outline"></i>
-        <span>图表</span>
-      </li>
+      <ng-template #menuTpl let-menus>
+        <ng-container *ngFor="let menu of menus">
+          <li
+            *ngIf="!menu.children"
+            nz-menu-item nz-tooltip nzTooltipPlacement="right" [nzTitle]="menu.title"
+            (click)="saveselected(menu)">
+            <i nz-icon [nzType]="menu.icon" nzTheme="outline" *ngIf="menu.icon"></i>
 
-
-      <li nz-submenu nzOpen nzTitle="表格" nzIcon="form">
-        <ul>
-          <li nz-menu-item nzMatchRouter>
-            <a>Basic Form</a>
+            <a [routerLink]="menu.path"> <span>{{menu.title}}</span></a>
           </li>
-        </ul>
-      </li>
+
+          <li  *ngIf="menu.children"
+               nz-submenu nzOpen [nzTitle]="menu.title" nzIcon="form">
+            <ul>
+              <ng-container *ngTemplateOutlet="menuTpl; context: { $implicit: menu.children }"></ng-container>
+            </ul>
+          </li>
+        </ng-container>
+      </ng-template>
+
     </ul>
 
   </nz-sider>
@@ -74,13 +82,24 @@
 
 
         <app-breadcrumb></app-breadcrumb>
-
         <app-navbar class="right-menu"></app-navbar>
       </div>
-
     </nz-header>
     <nz-content>
+
+      <nz-tabset [nzType]="'card'" >
+      <nz-tab *ngFor="let tab of tabMenus" [nzTitle]="titleTemplate">
+        <ng-template #titleTemplate>
+          <div>
+            {{ tab.title }}
+            <i nz-icon nzType="close" (click)="closeTab(tab)" class="ant-tabs-close-x"></i>
+          </div>
+        </ng-template>
+      </nz-tab>
+    </nz-tabset>
+
       <div class="inner-content">
+
         <router-outlet></router-outlet>
       </div>
     </nz-content>

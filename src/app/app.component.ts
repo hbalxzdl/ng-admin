@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { Router ,ActivatedRoute,NavigationEnd} from "@angular/router";
 import {Title} from '@angular/platform-browser';
 import {filter, map} from 'rxjs/operators';
+import {PageService} from './services/page/page.service'
+import {observable} from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -11,47 +13,25 @@ import {filter, map} from 'rxjs/operators';
 export class AppComponent {
   constructor( private route: ActivatedRoute,
                private router: Router,
-               private title: Title) { }
+               private title: Title,
+               public pageService:PageService) { }
 
   ngOnInit(): void {
-    this.setTitle();
-
-    this.route.url.subscribe(url => {
-      // 更改页面title
-
-    });
-  }
-
-  setTitle() {
     this.router.events
       .pipe(
         filter(event => event instanceof NavigationEnd),
-        map(() => this.router)
       )
-      .subscribe((event) => {
+      .subscribe((event) =>{
+        //设置面包屑
+        let data=this.pageService.getBreadcrumbs(this.route.root)
+        this.pageService.setBreadcrumbs(data)
 
-        // 更改页面title
-        const titles = this.getTitle(this.router.routerState, this.router.routerState.root);
-        const title = titles[titles.length - 1];
-        console.log(title)
-        if (title) {
-          this.title.setTitle(title);
-        }
-      });
+        //设置title
+        this.pageService.setTitle(this.router.routerState,this.router.routerState.root)
+        this.pageService.title.subscribe(title=>this.title.setTitle(title))
+      })
+
   }
-
-  getTitle(state, parent) {
-    const data = [];
-    if (parent && parent.snapshot.data && parent.snapshot.data.title) {
-      data.push(parent.snapshot.data.title);
-    }
-
-    if (state && parent) {
-      data.push(...this.getTitle(state, state.firstChild(parent)));
-    }
-    return data;
-  }
-
 
 
 }

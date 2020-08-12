@@ -272,7 +272,7 @@ padding[2]的10:
   ) { }
 
   ngOnInit(): void {
-      setTimeout(()=>this.initCharts(),1000)
+      setTimeout(()=>this.initCharts(),100)
   }
 
 

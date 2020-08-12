@@ -9,9 +9,31 @@ import {ActivatedRoute} from '@angular/router';
 export class LayoutComponent implements OnInit {
   isCollapsed:boolean=true
   curIndex:number=1;
+  tabMenus=[]
   constructor(private route: ActivatedRoute) { }
 
-  ngOnInit(): void {
+  menus =[
+    {
+      title: '图表',
+      path:'/pages/project/echarts',
+      icon: 'area-chart',
+    },
+
+    {
+      title: '递归路由',
+      path:'',
+      children:[
+        {
+          title: '菜单1',
+        },
+        {
+          title: '菜单2',
+        }
+      ]
+    },
+
+  ]
+    ngOnInit(): void {
     this.route.url.subscribe(url => {
       console.log(url)
     });
@@ -19,6 +41,17 @@ export class LayoutComponent implements OnInit {
 
   toggle(event):void{
     this.curIndex=Number(event.target.dataset.index)
+  }
+
+  saveselected(menu){
+   let flag= this.tabMenus.some(res=>res.path==menu.path)
+   if(!flag){
+     this.tabMenus.push(menu)
+   }
+  }
+
+  closeTab(tab){
+
   }
 
 }

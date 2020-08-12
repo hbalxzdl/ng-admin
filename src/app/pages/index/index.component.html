@@ -7,7 +7,7 @@
     [size]="size"
     [minSize]="minSize"
     [maxSize]="maxSize"
-    [collapsible]="false"
+    [collapsible]="true"
     (sizeChange)="sizeChange($event)"
     (collapsedChange)="collapsedChange($event)"
   >
@@ -28,7 +28,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let data of basicTable.data">
+            <tr *ngFor="let data of basicTable.data;let key=index" (dblclick)="edit(data,key)" [class.active]="key==curRowIndex">
               <td>{{data.name}}</td>
               <td>{{data.age}}</td>
               <td>{{data.address}}</td>
@@ -58,10 +58,10 @@
 
     </div>
   </d-splitter-pane>
-  <d-splitter-pane minSize="15%">
+  <d-splitter-pane minSize="15%"  [collapsible]="true">
     <div class="pane-content">
       <h2>右侧面板</h2>
-      <div>右侧内容区域</div>
+      <div>收到消息{{msg}}</div>
     </div>
   </d-splitter-pane>
 </d-splitter>
