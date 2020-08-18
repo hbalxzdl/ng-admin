@@ -56,8 +56,9 @@ export class TabComponent implements OnInit {
         this.tabMenus.forEach(p => p.isSelect = p.module == menu.module);
       }
     });
-
   }
+
+  //决定一个 tab 是否可以被切换
   canDeactivate: NzTabsCanDeactivateFn = (fromIndex: number, toIndex: number) =>{
     let flg=true;
 
@@ -65,18 +66,9 @@ export class TabComponent implements OnInit {
       flg=promise
       if (promise){
         this.selectedIndex = toIndex;
-
       }
     });
-
     return false
   }
 
-    seleteTab(tab, index) {
-    this.router.navigate([tab.module]).then(promise=>{
-      if (promise){
-        this.selectedIndex = index;
-      }
-    });
-  }
 }

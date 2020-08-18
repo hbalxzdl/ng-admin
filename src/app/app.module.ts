@@ -17,6 +17,7 @@ import {AppRoutes} from './app.route';
 import {LayoutModule} from './components/layout/layout.module';
 import {LoginComponent} from './pages/login/login.component';
 
+import { RouteReuseStrategy } from '@angular/router';
 import {SimpleReuseStrategyService} from './services/router/simpleReuseStrategy/simple-reuse-strategy.service';
 
 
@@ -42,7 +43,10 @@ registerLocaleData(zh);
   ],
 
   providers: [
-    {provide: NZ_I18N, useValue: zh_CN, useClass: SimpleReuseStrategyService}],
+    {provide: NZ_I18N, useValue: zh_CN,},
+    { provide: RouteReuseStrategy, useClass: SimpleReuseStrategyService },
+  ],
+
   bootstrap: [AppComponent]
 })
 export class AppModule {
