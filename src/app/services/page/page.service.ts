@@ -61,11 +61,9 @@ export class PageService {
 
     // 得到子路由
     const children: ActivatedRoute[] = route.children;
-    console.log('=== janine.有多少子路由 ===', children);
 
     // 如果没有子路由返回
     if (children.length === 0) {
-      console.log('=== janine.没有子路由是 ===', breadcrumbs);
       return breadcrumbs;
     }
 
@@ -86,7 +84,6 @@ export class PageService {
       const routeURL: string = child.snapshot.url.map(segment => segment.path).join('/');
       // append route URL to URL 追加路由的url到url
       if (routeURL) {
-        console.log('=== janine.routeURL ===', routeURL);
         url += `/${routeURL}`;
       }
 
@@ -102,8 +99,6 @@ export class PageService {
       if (child.component) {
         breadcrumbs.push(breadcrumb);
       }
-
-      console.log('=== janine.breadcrumbs === ', breadcrumb);
 
       // 递归
       return this.getBreadcrumbs(child, url, breadcrumbs);

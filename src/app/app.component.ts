@@ -44,7 +44,6 @@ export class AppComponent {
 
         //路径
         let path=this.router.routerState.snapshot.url
-        this.menuList.forEach(p => p.isSelect=false);
         var menu = { title: title, module: path, power: event["power"], isSelect:true};
 
         this.pageService.setMenuList(menu)
