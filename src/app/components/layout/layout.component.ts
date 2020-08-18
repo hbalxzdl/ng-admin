@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 
 @Component({
@@ -7,22 +7,24 @@ import {ActivatedRoute} from '@angular/router';
   styleUrls: ['./layout.component.scss']
 })
 export class LayoutComponent implements OnInit {
-  isCollapsed:boolean=true
-  curIndex:number=1;
-  tabMenus=[]
-  constructor(private route: ActivatedRoute) { }
+  isCollapsed: boolean = true;
+  curIndex: number = 1;
+  tabMenus = [];
 
-  menus =[
+  constructor(private route: ActivatedRoute) {
+  }
+
+  menus = [
     {
       title: '图表',
-      path:'/pages/project/echarts',
+      path: '/pages/project/echarts',
       icon: 'area-chart',
     },
 
     {
       title: '递归路由',
-      path:'',
-      children:[
+      path: '',
+      children: [
         {
           title: '菜单1',
         },
@@ -32,25 +34,26 @@ export class LayoutComponent implements OnInit {
       ]
     },
 
-  ]
-    ngOnInit(): void {
+  ];
+
+  ngOnInit(): void {
     this.route.url.subscribe(url => {
-      console.log(url)
+      console.log(url);
     });
   }
 
-  toggle(event):void{
-    this.curIndex=Number(event.target.dataset.index)
+  toggle(event): void {
+    this.curIndex = Number(event.target.dataset.index);
   }
 
-  saveselected(menu){
-   let flag= this.tabMenus.some(res=>res.path==menu.path)
-   if(!flag){
-     this.tabMenus.push(menu)
-   }
+  saveselected(menu) {
+    let flag = this.tabMenus.some(res => res.path == menu.path);
+    if (!flag) {
+      this.tabMenus.push(menu);
+    }
   }
 
-  closeTab(tab){
+  closeTab(tab) {
 
   }
 

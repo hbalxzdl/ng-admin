@@ -6,7 +6,8 @@ import { NgZorroAntdModule } from "ng-zorro-antd"
 
 import { LayoutComponent } from './layout.component';
 import {NavbarComponent} from './navbar/navbar.component'
-import{BreadcrumbComponent} from '../../components/breadcrumb/breadcrumb.component'
+import{BreadcrumbComponent} from '../../components/breadcrumb/breadcrumb.component';
+import { TabComponent } from './tab/tab.component'
 
 @NgModule({
   entryComponents: [
@@ -20,7 +21,8 @@ import{BreadcrumbComponent} from '../../components/breadcrumb/breadcrumb.compone
   declarations: [
     LayoutComponent,
     NavbarComponent,
-    BreadcrumbComponent
+    BreadcrumbComponent,
+    TabComponent
   ],
   exports:[
 

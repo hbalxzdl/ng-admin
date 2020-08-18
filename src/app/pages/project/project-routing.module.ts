@@ -8,7 +8,7 @@ const routes: Routes = [
   {
     path: 'echarts',
     component: EchartsComponent,
-    data: { title: '图表' },
+    data: { title: '图表' ,keepAlive: true,power:'SHOW'},
     // canActivate: [RouteguardService],
   },
 

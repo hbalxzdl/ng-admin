@@ -12,12 +12,10 @@ export const AppRoutes: Routes =[
   {
     path: 'pages',
     canActivate: [AuthService],  //进入认证
-    data: { title: '首页'},
+    data:{title:'首页'},
     loadChildren: () => import('./pages/pages.module')
       .then(m => m.PagesModule),
   },
-
-
 
   {
     path: 'login',

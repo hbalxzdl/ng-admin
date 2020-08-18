@@ -17,6 +17,7 @@ import {AppRoutes} from './app.route';
 import {LayoutModule} from './components/layout/layout.module';
 import {LoginComponent} from './pages/login/login.component';
 
+import {SimpleReuseStrategyService} from './services/router/simpleReuseStrategy/simple-reuse-strategy.service';
 
 
 registerLocaleData(zh);
@@ -38,11 +39,10 @@ registerLocaleData(zh);
     LayoutModule,
     NgZorroAntdModule,
 
-
   ],
 
   providers: [
-    {provide: NZ_I18N, useValue: zh_CN,}],
+    {provide: NZ_I18N, useValue: zh_CN, useClass: SimpleReuseStrategyService}],
   bootstrap: [AppComponent]
 })
 export class AppModule {

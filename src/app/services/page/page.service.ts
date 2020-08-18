@@ -15,14 +15,19 @@ interface IBreadcrumb {
 
 
 export class PageService {
-  // 当前显示的多页面列表
-  opened = [];
+  //路由列表
+  // menuList: Array<{ title: string, module: string, power: string,isSelect:boolean }>=[];
+  //
   // 当前页面
   current: '';
 
 
   public breadcrumbs = new BehaviorSubject<Array<any>>([]); //面包屑
-  public title = new BehaviorSubject<string>(''); //面包屑
+  public title = new BehaviorSubject<string>('');
+
+  public menuList = new BehaviorSubject<any>({});
+
+
 
   constructor() {
   }
@@ -33,22 +38,14 @@ export class PageService {
    * @param {Object} context
    * @param {Object} payload new tag info
    */
-  add() {
+  add(data) {
 
   }
 
-
-  open(fullPath) {
-    // 已经打开的页面
-    let opened = this.opened;
-    // 判断此页面是否已经打开 并且记录位置
-    let pageOpendIndex = 0;
-    const pageOpend = opened.find((page, index) => {
-      const same = page.fullPath === fullPath;
-      pageOpendIndex = same ? index : pageOpendIndex;
-      return same;
-    });
+  setMenuList(menuData){
+    this.menuList.next(menuData);
   }
+
 
   public setBreadcrumbs(message) {
     this.breadcrumbs.next(message);

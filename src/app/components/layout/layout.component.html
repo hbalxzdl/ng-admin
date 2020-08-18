@@ -80,23 +80,14 @@
             ></i>
         </span>
 
-
         <app-breadcrumb></app-breadcrumb>
         <app-navbar class="right-menu"></app-navbar>
       </div>
     </nz-header>
-    <nz-content>
 
-      <nz-tabset [nzType]="'card'" >
-      <nz-tab *ngFor="let tab of tabMenus" [nzTitle]="titleTemplate">
-        <ng-template #titleTemplate>
-          <div>
-            {{ tab.title }}
-            <i nz-icon nzType="close" (click)="closeTab(tab)" class="ant-tabs-close-x"></i>
-          </div>
-        </ng-template>
-      </nz-tab>
-    </nz-tabset>
+    <app-tab></app-tab>
+
+    <nz-content>
 
       <div class="inner-content">
 

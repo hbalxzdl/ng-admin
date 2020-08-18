@@ -1,0 +1,10 @@
+<nz-tabset [nzType]="'card'" [nzSelectedIndex]="selectedIndex">
+  <nz-tab *ngFor="let tab of tabMenus;let key=index" [nzTitle]="titleTemplate" (nzClick)="seleteTab(tab,key)" >
+    <ng-template #titleTemplate >
+      <div>
+        {{ tab.title }}
+        <i nz-icon nzType="close" (click)="closeTab(tab,key)" class="ant-tabs-close-x"  *ngIf="tabMenus.length>1"></i>
+      </div>
+    </ng-template>
+  </nz-tab>
+</nz-tabset>

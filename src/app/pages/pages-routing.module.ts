@@ -15,18 +15,18 @@ const routes: Routes = [{
     {
       path: 'dashboard',
       component: IndexComponent,
+      data: { title: '首页' ,keepAlive: true,power:'SHOW'},
       // canActivate: [RouteguardService],
     },
     {
       path: 'table',
       component: TableComponent,
-      data: { title: '表格' },
+      data: { title: '表格' ,keepAlive: true,power:'SHOW'},
       canDeactivate: [CanDeactivatService],
     },
 
     {
       path: 'project',
-      data: { title: '首页'},
       loadChildren: () => import('./project/project.module')
         .then(m => m.ProjectModule),
     },
