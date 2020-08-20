@@ -30,27 +30,30 @@ export class AppComponent {
           while (route.firstChild) {
             route = route.firstChild;
           }
-          console.log(route);
           return route;
         }),
         filter(route => route.outlet === 'primary'),
-        mergeMap(route => route.data)
+        // mergeMap(route => route.data)
       )
       .subscribe(event => {
-
-        //路由data的标题
-        let title = event['title'];
+        let {data,routeConfig}=event
+        // 路由data的标题
+        let title = data['value']['title'];
         this.title.setTitle(title)
-
-        //路径
+        console.log(event)
+        // 路径
         let path=this.router.routerState.snapshot.url
-        var menu = { title: title, module: path, power: event["power"], isSelect:true};
+
+        let componentName=path.replace(/\//g, '_')
+          + '_' + (routeConfig['loadChildren'] || routeConfig['component'].toString().split('(')[0].split(' ')[1] )
+
+        var menu = { title: title, module: path, power: data['value']["power"], isSelect:true,componentName};
 
         this.pageService.setMenuList(menu)
 
-        //设置面包屑
-        let data=this.pageService.getBreadcrumbs(this.activatedRoute.root)
-        this.pageService.setBreadcrumbs(data)
+        // //设置面包屑
+        let crumb=this.pageService.getBreadcrumbs(event.root)
+        this.pageService.setBreadcrumbs(crumb)
 
       });
 

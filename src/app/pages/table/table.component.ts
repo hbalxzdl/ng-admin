@@ -47,6 +47,11 @@ export class TableComponent implements OnInit {
 
       this.getList()
 
+   setTimeout(res=>{
+     let tr=document.querySelectorAll('tbody tr')
+     console.log(tr)
+   },1000)
+
   }
 
   canDeactivate(): Observable<boolean> | boolean {

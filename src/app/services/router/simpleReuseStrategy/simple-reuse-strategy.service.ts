@@ -41,17 +41,23 @@ export class SimpleReuseStrategyService implements  RouteReuseStrategy  {
       JSON.stringify(future.params)==JSON.stringify(curr.params);
   }
 
-
+  //使用route.routeConfig.path做key去缓存
   private getRouteUrl(route: ActivatedRouteSnapshot){
-    return route['_routerState'].url.replace(/\//g,'_')
+    return route['_routerState'].url.replace(/\//g, '_')
+      + '_' + (route.routeConfig.loadChildren || route.routeConfig.component.toString().split('(')[0].split(' ')[1] );
+
   }
 
   public static deleteRouteSnapshot(name:string):void{
+    console.log(SimpleReuseStrategyService.handlers[name])
+
     if(SimpleReuseStrategyService.handlers[name]){
       delete SimpleReuseStrategyService.handlers[name];
     }else{
       SimpleReuseStrategyService.waitDelete=name;
     }
+
+    console.log(SimpleReuseStrategyService.handlers[name])
   }
 
 

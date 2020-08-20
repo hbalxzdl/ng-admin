@@ -11,7 +11,7 @@ import {SimpleReuseStrategyService} from '../../../services/router/simpleReuseSt
   providers: [SimpleReuseStrategyService]
 })
 export class TabComponent implements OnInit {
-  public tabMenus: Array<{ title: string, module: string, power: string, isSelect: boolean }> = [];
+  public tabMenus: Array<{ title: string, module: string, power: string, isSelect: boolean,componentName:string }> = [];
 
   public selectedIndex: number = 0;
 
@@ -38,20 +38,24 @@ export class TabComponent implements OnInit {
     if (this.tabMenus.length == 1) {
       return;
     }
+    //如果关闭的不是当前路由
+    if(this.selectedIndex!=index){
+      //删除复用
+      SimpleReuseStrategyService.deleteRouteSnapshot[tab.componentName];
+      this.tabMenus = this.tabMenus.filter(p => p.module != tab.module);
+      return;
+    }
 
     //显示上一个选中
     let menu = this.tabMenus[index - 1];
+    //如果上一个没有下一个选中
+    if (!menu) menu = this.tabMenus[index + 1];
 
-    if (!menu) {//如果上一个没有下一个选中
-      menu = this.tabMenus[index + 1];
-    }
     //显示当前路由信息
     this.router.navigate([menu.module]).then(promise => {
       if (promise) {
         this.tabMenus = this.tabMenus.filter(p => p.module != tab.module);
-        //删除复用
-        delete SimpleReuseStrategyService.handlers[tab.module];
-
+        SimpleReuseStrategyService.deleteRouteSnapshot[tab.componentName];
         this.tabMenus.forEach(p => p.isSelect=false);
         this.tabMenus.forEach(p => p.isSelect = p.module == menu.module);
       }
@@ -59,16 +63,14 @@ export class TabComponent implements OnInit {
   }
 
   //决定一个 tab 是否可以被切换
-  canDeactivate: NzTabsCanDeactivateFn = (fromIndex: number, toIndex: number) =>{
-    let flg=true;
+  canDeactivate: NzTabsCanDeactivateFn = async (fromIndex: number, toIndex: number) =>{
+    console.log(this.tabMenus[toIndex])
+    let flg=await this.router.navigate([this.tabMenus[toIndex].module])
+    if (flg){
+      this.selectedIndex = toIndex;
+    }
+    return flg
 
-    this.router.navigate([this.tabMenus[toIndex].module]).then(promise=>{
-      flg=promise
-      if (promise){
-        this.selectedIndex = toIndex;
-      }
-    });
-    return false
   }
 
 }
