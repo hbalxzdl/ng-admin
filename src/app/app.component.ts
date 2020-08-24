@@ -57,22 +57,6 @@ export class AppComponent {
 
       });
 
-    // this.router.events
-    //   .pipe(
-    //     filter(event => event instanceof NavigationEnd)
-    //   )
-    //   .subscribe((event) =>{
-    //     //设置面包屑
-    //     let data=this.pageService.getBreadcrumbs(this.route.root)
-    //     this.pageService.setBreadcrumbs(data)
-    //
-    //     //设置title
-    //     this.pageService.setTitle(this.router.routerState,this.router.routerState.root)
-    //     this.pageService.title.subscribe(title=>this.title.setTitle(title))
-    //
-    //
-    //   })
-
   }
 
 
